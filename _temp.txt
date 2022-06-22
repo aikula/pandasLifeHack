@@ -1,0 +1,13 @@
+docker run --rm 
+
+docker run --cpusets-cpus 0-4
+
+docker run -it -p 8888:8888 --user $(id -u):$(id -g) --group-add users -v "${PWD}/notebook":/opt/notebooks jupyter/minimal-notebook /bin/bash -c "/opt/conda/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --notebook-dir=/opt/notebooks --allow-root --no-browser --NotebookApp.password='sha1:c6f048ab2432:eda519a3f7b60d09689c1e98ca2ba050a437a4c1'"
+
+docker run -i -t -p 8888:8888 -v "${PWD}":/home/jovyan/work continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser --allow-root --NotebookApp.password='sha1:c6f048ab2432:eda519a3f7b60d09689c1e98ca2ba050a437a4c1'" 
+
+docker run -i -t -p 8888:8888 -v "${PWD}":/home/jovyan/work continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --ip='*' --port=8888 --no-browser --allow-root --NotebookApp.password='sha1:c6f048ab2432:eda519a3f7b60d09689c1e98ca2ba050a437a4c1'" 
+
+docker run -i -t -p 8888:8888 -v "pwd":/home/jovyan/work continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && /opt/conda/bin/jupyter notebook --ip='*' --port=8888 --no-browser --allow-root --NotebookApp.password='sha1:c6f048ab2432:eda519a3f7b60d09689c1e98ca2ba050a437a4c1'" 
+
+docker run --rm -it -p 8888:8888 --user $(id -u):$(id -g) --group-add users -v "${PWD}/notebook":/opt/notebooks jupyter/minimal-notebook /bin/bash -c "/opt/conda/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --notebook-dir=/opt/notebooks --allow-root --no-browser --NotebookApp.password='sha1:c6f048ab2432:eda519a3f7b60d09689c1e98ca2ba050a437a4c1'"
